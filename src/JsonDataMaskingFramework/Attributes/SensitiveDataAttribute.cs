@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JsonDataMasking.Attributes
+namespace JsonDataMaskingFramework.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class SensitiveDataAttribute : Attribute
@@ -11,8 +11,8 @@ namespace JsonDataMasking.Attributes
 
         public int ShowLast = 0;
 
-        public string? SubstituteText;
-
+        public string SubstituteText;
+        
         public string Mask = "*";
     }
 }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonDataMaskingFramework", "JsonDataMaskingFramework\JsonDataMaskingFramework.csproj", "{973E9F11-23A7-403E-85DC-D2ED70537C60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonDataMaskingFramework.Test", "JsonDataMaskingFramework.Test\JsonDataMaskingFramework.Test.csproj", "{51A13224-CB8B-4001-A16C-A58388E7FF2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{973E9F11-23A7-403E-85DC-D2ED70537C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973E9F11-23A7-403E-85DC-D2ED70537C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973E9F11-23A7-403E-85DC-D2ED70537C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973E9F11-23A7-403E-85DC-D2ED70537C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A13224-CB8B-4001-A16C-A58388E7FF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A13224-CB8B-4001-A16C-A58388E7FF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A13224-CB8B-4001-A16C-A58388E7FF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A13224-CB8B-4001-A16C-A58388E7FF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5940DD7-4187-4486-A862-A290070316A1}
+	EndGlobalSection
+EndGlobal

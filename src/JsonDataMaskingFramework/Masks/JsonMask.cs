@@ -1,5 +1,5 @@
 ﻿using Force.DeepCloner;
-using JsonDataMasking.Attributes;
+using JsonDataMaskingFramework.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace JsonDataMasking.Masks
+namespace JsonDataMaskingFramework.Masks
 {
     public static class JsonMask
     {
@@ -28,7 +28,7 @@ namespace JsonDataMasking.Masks
         /// <exception cref="NotSupportedException">Thrown if the <c>[SensitiveData]</c> attribute was added to a not supported type</exception>
         public static T MaskSensitiveData<T>(T data)
         {
-            if (data is null)
+            if (data == null)
                 throw new ArgumentNullException(nameof(data));
 
             var dataDeepClone = data.DeepClone();
@@ -38,12 +38,12 @@ namespace JsonDataMasking.Masks
 
         private static T MaskPropertiesWithSensitiveDataAttribute<T>(T data)
         {
-            var typeProperties = data!.GetType().GetProperties();
+            var typeProperties = data.GetType().GetProperties();
 
             foreach (PropertyInfo property in typeProperties)
             {
                 var propertyValue = property.GetValue(data);
-                if (propertyValue is null)
+                if (propertyValue == null)
                     continue;
 
                 var propertyAttribute = property.GetCustomAttribute<SensitiveDataAttribute>();
@@ -70,7 +70,7 @@ namespace JsonDataMasking.Masks
             return data;
         }
 
-        private static string? GetMaskedPropertyValue(string? currentPropertyValue, SensitiveDataAttribute attribute)
+        private static string GetMaskedPropertyValue(string currentPropertyValue, SensitiveDataAttribute attribute)
         {
             if (string.IsNullOrWhiteSpace(currentPropertyValue)) return currentPropertyValue;
 
@@ -85,7 +85,7 @@ namespace JsonDataMasking.Masks
                 if (!AreFirstAndLastParametersInValidRange(propertySize, attribute))
                     return new string(attribute.Mask.First(), DefaultMaskSize);
 
-                maskedPropertyValueBuilder.Append(currentPropertyValue?[..attribute.ShowFirst]);
+                maskedPropertyValueBuilder.Append(currentPropertyValue?.Take(attribute.ShowFirst).ToArray());
                 maskedPropertyValueBuilder.Append(currentPropertyValue?.Substring(propertySize - attribute.ShowLast, attribute.ShowLast));
                 maskedPropertyValueBuilder.Insert(attribute.ShowFirst, new string(attribute.Mask.First(), maskSize));
             }
@@ -101,16 +101,16 @@ namespace JsonDataMasking.Masks
 
         private static void MaskIEnumerableProperty<T>(T data, PropertyInfo property)
         {
-            var collection = (property.GetValue(data) as IEnumerable)!;
+            var collection = (property.GetValue(data) as IEnumerable);
             var maskedCollection = new List<object>();
-            Type? collectionType = null;
+            Type collectionType = null;
             var propertyAttribute = property.GetCustomAttribute<SensitiveDataAttribute>();
 
             foreach (var value in collection)
             {
                 if (collectionType is null) collectionType = value.GetType();
                 
-                object? maskedCollectionValue = null;
+                object maskedCollectionValue = null;
                 if (IsClassReferenceType(collectionType))
                     maskedCollectionValue = MaskPropertiesWithSensitiveDataAttribute(value);
                 else if (propertyAttribute != null && IsSupportedBaseType(collectionType))
@@ -133,7 +133,7 @@ namespace JsonDataMasking.Masks
             if (collection is null)
                 throw new NotSupportedException("Masking of non-string base types in Dictionaries is not supported");
 
-            var maskedCollection = new Dictionary<string, string?>();
+            var maskedCollection = new Dictionary<string, string>();
 
             foreach (var pair in collection)
             {
@@ -156,11 +156,10 @@ namespace JsonDataMasking.Masks
         #endregion Convertion
 
         #region Validations
-        private static bool IsSupportedBaseType(Type type) => type switch
+        private static bool IsSupportedBaseType(Type type)
         {
-            Type _ when type == typeof(string) => true,
-            _ => throw new NotSupportedException("Masking of non-string base types is not supported")
-        };
+            return type == typeof(string) ? true : throw new NotSupportedException("Masking of non-string base types is not supported");
+        }
 
         private static bool AreFirstAndLastParametersInValidRange(int propertySize, SensitiveDataAttribute attribute) =>
             attribute.ShowFirst <= propertySize && attribute.ShowLast <= propertySize && (attribute.ShowFirst + attribute.ShowLast) <= propertySize;

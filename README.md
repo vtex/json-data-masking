@@ -1,9 +1,10 @@
-[![NuGet Version](https://img.shields.io/nuget/v/JsonDataMasking)](https://www.nuget.org/packages/JsonDataMasking/)
-![CI](https://github.com/luizaes/json-data-masking/actions/workflows/ci.yml/badge.svg)
+# JSON Data Masking Framework
 
-# JSON Data Masking
+JSON Data Masking is a library for .NET Framework applications that simplifies the masking process of PII/sensitive information.
 
-JSON Data Masking is a library for .NET Core applications that simplifies the masking process of PII/sensitive information.
+## Disclaimer
+
+For .NET Core applications, you can use the original [JSON Data Masking](https://www.nuget.org/packages/JsonDataMasking/) library whose repository is [this one](https://github.com/luizaes/json-data-masking).
 
 ## Usage
 

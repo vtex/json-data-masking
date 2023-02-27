@@ -1,9 +1,9 @@
-﻿using JsonDataMasking.Test.MockData;
+﻿using JsonDataMaskingFramework.Test.MockData;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace JsonDataMasking.Test
+namespace JsonDataMaskingFramework.Test
 {
     public class ExtensionsTests
     {
