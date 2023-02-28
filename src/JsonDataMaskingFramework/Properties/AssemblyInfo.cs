@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JsonDataMaskingFramework")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("JSON Data Masking is a library for .NET Framework applications that simplifies the masking process of PII/sensitive information.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("VTEX")]
 [assembly: AssemblyProduct("JsonDataMaskingFramework")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
