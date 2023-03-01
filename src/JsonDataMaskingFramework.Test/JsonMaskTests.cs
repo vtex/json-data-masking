@@ -1,17 +1,17 @@
-using JsonDataMasking.Masks;
-using JsonDataMasking.Test.MockData;
+using JsonDataMaskingFramework.Masks;
+using JsonDataMaskingFramework.Test.MockData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace JsonDataMasking.Test
+namespace JsonDataMaskingFramework.Test
 {
     public class JsonMaskTests
     {
         private const string CustomerDocument = "99999999999";
         private const int ShowElementsNumber = 3;
-        private readonly string DefaultMask = new('*', JsonMask.DefaultMaskSize);
+        private readonly string DefaultMask = new string('*', JsonMask.DefaultMaskSize);
 
         [Fact]
         public void MaskSensitiveData_DoesNotMaskProperty_WhenDoesNotHaveAttribute()
@@ -77,7 +77,7 @@ namespace JsonDataMasking.Test
             var maskedCustomerData = JsonMask.MaskSensitiveData(customer);
 
             // Assert
-            Assert.True(CustomerDocument[..ShowElementsNumber] == maskedCustomerData?.Document?[..ShowElementsNumber]);
+            Assert.True(CustomerDocument.Substring(0, ShowElementsNumber) == (maskedCustomerData?.Document ?? string.Empty).Substring(0, ShowElementsNumber));
         }
 
         [Fact]
@@ -300,7 +300,7 @@ namespace JsonDataMasking.Test
         public void MaskSensitiveData_ThrowsArgumentNullException_WhenObjectIsNull()
         {
             // Arrange
-            CustomerMock? customer = null;
+            CustomerMock customer = null;
 
             // Act and assert
             Assert.Throws<ArgumentNullException>(() => JsonMask.MaskSensitiveData(customer));

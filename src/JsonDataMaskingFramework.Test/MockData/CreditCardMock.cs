@@ -1,7 +1,7 @@
-﻿using JsonDataMasking.Attributes;
+﻿using JsonDataMaskingFramework.Attributes;
 using System.Text.Json.Serialization;
 
-namespace JsonDataMasking.Test.MockData
+namespace JsonDataMaskingFramework.Test.MockData
 {
     public class CreditCardMock
     {

@@ -1,46 +1,46 @@
-﻿using JsonDataMasking.Attributes;
+﻿using JsonDataMaskingFramework.Attributes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace JsonDataMasking.Test.MockData
+namespace JsonDataMaskingFramework.Test.MockData
 {
     public class CustomerMock
     {
         [SensitiveData]
         [JsonPropertyName("fullName")]
-        public string? FullName { get; set; }
+        public string FullName { get; set; }
 
         [SensitiveData(SubstituteText = "REDACTED")]
         [JsonPropertyName("creditCardNumber")]
-        public string? CreditCardNumber { get; set; }
+        public string CreditCardNumber { get; set; }
 
         [SensitiveData(Mask = "#")]
         [JsonPropertyName("creditCardSecurityCode")]
-        public string? CreditCardSecurityCode { get; set; }
+        public string CreditCardSecurityCode { get; set; }
 
         [SensitiveData(PreserveLength = true, ShowFirst = 3, ShowLast = 3)]
         [JsonPropertyName("document")]
-        public string? Document { get; set; }
+        public string Document { get; set; }
 
         [JsonPropertyName("customerType")]
-        public string? CustomerType { get; set; }
+        public string CustomerType { get; set; }
 
         [JsonPropertyName("address")]
-        public CustomerAddressMock? Address { get; set; }
+        public CustomerAddressMock Address { get; set; }
 
         [SensitiveData]
         [JsonPropertyName("documents")]
-        public List<string>? Documents { get; set; }
+        public List<string> Documents { get; set; }
 
         [SensitiveData]
         [JsonPropertyName("customFields")]
-        public Dictionary<string, string>? CustomFields { get; set; }
+        public Dictionary<string, string> CustomFields { get; set; }
 
         [JsonPropertyName("addresses")]
-        public IEnumerable<CustomerAddressMock>? Addresses { get; set; }
+        public IEnumerable<CustomerAddressMock> Addresses { get; set; }
 
         [SensitiveData]
         [JsonPropertyName("customerIds")]
-        public IEnumerable<string>? CustomerIds { get; set; }
+        public IEnumerable<string> CustomerIds { get; set; }
     }
 }

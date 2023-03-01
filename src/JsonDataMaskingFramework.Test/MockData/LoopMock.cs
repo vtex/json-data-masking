@@ -1,6 +1,4 @@
-﻿using JsonDataMasking.Attributes;
-
-namespace JsonDataMasking.Test.MockData
+﻿namespace JsonDataMaskingFramework.Test.MockData
 {
     public class LoopMock
     {
