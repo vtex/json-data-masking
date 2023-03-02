@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <title>$title$</title>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>..\Icon.png</icon>
+    <readme>..\README.md</readme>
+    <projectUrl>https://github.com/vtex/json-data-masking-framework</projectUrl>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <releaseNotes>Initial release</releaseNotes>
+    <tags>masking json pii sensitive data</tags>
+    <dependencies>
+      <group targetFramework="net472">
+        <dependency id="DeepCloner" version="0.10.4" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
