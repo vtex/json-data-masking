@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>$id$</id>
-	<title>$title$</title>
+    <title>$title$</title>
     <version>$version$</version>
     <authors>$author$</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <icon>..\Icon.png</icon>
-	<readme>..\README.md</readme>
+    <readme>..\README.md</readme>
     <projectUrl>https://github.com/vtex/json-data-masking-framework</projectUrl>
     <description>$description$</description>
-	<copyright>$copyright$</copyright>
+    <copyright>$copyright$</copyright>
     <releaseNotes>Initial release</releaseNotes>
     <tags>masking json pii sensitive data</tags>
     <dependencies>
